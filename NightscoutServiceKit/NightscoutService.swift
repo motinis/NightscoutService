@@ -429,7 +429,8 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
                 amountInGrams: carbCommand.amountInGrams,
                 absorptionTime: carbCommand.absorptionTime,
                 foodType: carbCommand.foodType,
-                startDate: carbCommand.startDate
+                startDate: carbCommand.startDate,
+                giveRecommendedBolus: carbCommand.giveRecommendedBolus
             )
         }
     }

@@ -35,7 +35,8 @@ public enum Action: Codable {
         switch self {
         case .carbsEntry(let carbAction):
             let amountFormatted = Self.numberFormatter.string(from: carbAction.amountInGrams as NSNumber) ?? ""
-            return "\(amountFormatted)" + " " + carbGramAbbreviation
+            let recommendedBolus = carbAction.giveRecommendedBolus ? " " + giveBolusRecommended : ""
+            return "\(amountFormatted)" + " " + carbGramAbbreviation + recommendedBolus
         case .bolusEntry(let bolusAction):
             let amountFormatted = Self.numberFormatter.string(from: bolusAction.amountInUnits as NSNumber) ?? ""
             return "\(amountFormatted)" + " " + bolusUnitAbbreviation
@@ -52,6 +53,10 @@ public enum Action: Codable {
     
     var bolusUnitAbbreviation: String {
         LocalizedString("U", comment: "The remote action abbreviation for bolus units")
+    }
+    
+    var giveBolusRecommended: String {
+        LocalizedString("Gives Bolus Recommended", comment: "indicates it will automatically give the recommended bolus")
     }
     
     static var numberFormatter: NumberFormatter = {
