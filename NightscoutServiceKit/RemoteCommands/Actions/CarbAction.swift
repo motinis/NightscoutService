@@ -14,14 +14,14 @@ public struct CarbAction: Codable{
     public let absorptionTime: TimeInterval?
     public let foodType: String?
     public let startDate: Date?
-    public let giveRecommendedBolus: Bool
+    public let bolusType: BolusType?
     
     public init(amountInGrams: Double, absorptionTime: TimeInterval? = nil, foodType: String? = nil, startDate: Date? = nil,
-                giveRecommendedBolus: Bool = false) {
+                bolusType: BolusType? = nil) {
         self.amountInGrams = amountInGrams
         self.absorptionTime = absorptionTime
         self.foodType = foodType
         self.startDate = startDate
-        self.giveRecommendedBolus = giveRecommendedBolus
+        self.bolusType = bolusType
     }
 }

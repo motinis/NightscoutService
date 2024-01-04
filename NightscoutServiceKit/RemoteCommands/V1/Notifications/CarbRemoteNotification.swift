@@ -20,7 +20,7 @@ public struct CarbRemoteNotification: RemoteNotification, Codable {
     public let sentAt: Date?
     public let otp: String?
     public let enteredBy: String?
-    public let giveRecommendedBolus: Bool?
+    public let bolusType: BolusType?
     public let notes: String?
 
     enum CodingKeys: String, CodingKey {
@@ -33,7 +33,7 @@ public struct CarbRemoteNotification: RemoteNotification, Codable {
         case sentAt = "sent-at"
         case otp = "otp"
         case enteredBy = "entered-by"
-        case giveRecommendedBolus = "bolus"
+        case bolusType = "bolus-type"
         case notes = "notes"
     }
     
@@ -45,13 +45,17 @@ public struct CarbRemoteNotification: RemoteNotification, Codable {
     }
     
     func toRemoteAction() -> Action {
-        var giveBolus = giveRecommendedBolus ?? false
-        if giveRecommendedBolus == nil && notes != nil { // notes gives backwards compatability with NS
-            giveBolus = notes!.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == "bolus"
+        var bolusType = bolusType
+        if bolusType == nil && notes != nil { // notes gives backwards compatability with NS
+            let notes = notes!.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+            if notes == "bolus recommended" {
+                bolusType = .recommended
+            } else if notes == "bolus-non-correcting" {
+                bolusType = .nonCorrecting
+            }
         }
         
-        let action = CarbAction(amountInGrams: amount, absorptionTime: absorptionTime(), foodType: foodType, startDate: startDate,
-                                giveRecommendedBolus: giveBolus)
+        let action = CarbAction(amountInGrams: amount, absorptionTime: absorptionTime(), foodType: foodType, startDate: startDate, bolusType: bolusType)
         return .carbsEntry(action)
     }
     
