@@ -31,11 +31,8 @@ public struct BolusRemoteNotification: RemoteNotification, Codable {
         return .bolusEntry(BolusAction(amountInUnits: amount))
     }
     
-    func validate(otpManager: OTPManager) throws {
-        let expirationValidator = ExpirationValidator(expiration: expiration)
-        let otpValidator = OTPValidator(sentAt: sentAt, otp: otp, otpManager: otpManager)
-        try expirationValidator.validate()
-        try otpValidator.validate()
+    func otpValidationRequired() -> Bool {
+        return true
     }
     
     public static func includedInNotification(_ notification: [String: Any]) -> Bool {

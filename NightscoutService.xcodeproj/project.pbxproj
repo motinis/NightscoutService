@@ -37,8 +37,6 @@
 		A993990322BC7095005E39D3 /* NightscoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993990222BC7095005E39D3 /* NightscoutService.swift */; };
 		A993990522BC70B7005E39D3 /* NightscoutService+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993990422BC70B7005E39D3 /* NightscoutService+UI.swift */; };
 		A99A115E29AA28EE007919CE /* RemoteCommandSourceV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A115D29AA28EE007919CE /* RemoteCommandSourceV1.swift */; };
-		A99A117829AA4D0A007919CE /* ExpirationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A117729AA4D0A007919CE /* ExpirationValidator.swift */; };
-		A99A117A29AA4D30007919CE /* OTPValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A117929AA4D30007919CE /* OTPValidator.swift */; };
 		A99C713523396CB100AB9035 /* NightscoutServiceKitPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = A99C713323396CB100AB9035 /* NightscoutServiceKitPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A99C714023396D6200AB9035 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C62DA32331CAD400535612 /* OSLog.swift */; };
 		A99C714223396D8E00AB9035 /* NightscoutServiceKitPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99C714123396D8E00AB9035 /* NightscoutServiceKitPlugin.swift */; };
@@ -171,8 +169,6 @@
 		A993990222BC7095005E39D3 /* NightscoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightscoutService.swift; sourceTree = "<group>"; };
 		A993990422BC70B7005E39D3 /* NightscoutService+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NightscoutService+UI.swift"; sourceTree = "<group>"; };
 		A99A115D29AA28EE007919CE /* RemoteCommandSourceV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommandSourceV1.swift; sourceTree = "<group>"; };
-		A99A117729AA4D0A007919CE /* ExpirationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationValidator.swift; sourceTree = "<group>"; };
-		A99A117929AA4D30007919CE /* OTPValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPValidator.swift; sourceTree = "<group>"; };
 		A99C713123396CB100AB9035 /* NightscoutServiceKitPlugin.loopplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NightscoutServiceKitPlugin.loopplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99C713323396CB100AB9035 /* NightscoutServiceKitPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NightscoutServiceKitPlugin.h; sourceTree = "<group>"; };
 		A99C713423396CB100AB9035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -430,8 +426,6 @@
 		A99A117629AA3427007919CE /* Validators */ = {
 			isa = PBXGroup;
 			children = (
-				A99A117729AA4D0A007919CE /* ExpirationValidator.swift */,
-				A99A117929AA4D30007919CE /* OTPValidator.swift */,
 				A941B08829BCB99C00F91340 /* RemoteCommandValidator.swift */,
 			);
 			path = Validators;
@@ -748,7 +742,6 @@
 				A941B09129BD4A9E00F91340 /* BolusRemoteNotification.swift in Sources */,
 				C177C4522ABE2D9300911B56 /* PersistedCgmEvent.swift in Sources */,
 				A993990322BC7095005E39D3 /* NightscoutService.swift in Sources */,
-				A99A117829AA4D0A007919CE /* ExpirationValidator.swift in Sources */,
 				A934B6162358F42A00949C8B /* StoredDosingDecision.swift in Sources */,
 				A9AA6E6429EB07D7008FFA78 /* CarbAction.swift in Sources */,
 				A90E39A922BC7AD10016DFE8 /* Bundle.swift in Sources */,
@@ -759,7 +752,6 @@
 				A941B09029BD4A9E00F91340 /* CarbRemoteNotification.swift in Sources */,
 				A94DA7642353CF930082E26D /* StoredGlucoseSample.swift in Sources */,
 				A941B09429BD4A9F00F91340 /* OverrideRemoteNotification.swift in Sources */,
-				A99A117A29AA4D30007919CE /* OTPValidator.swift in Sources */,
 				C1E703642506BE9400DAB534 /* ObjectIdCache.swift in Sources */,
 				A941B08929BCB99C00F91340 /* RemoteCommandValidator.swift in Sources */,
 				C1398D2027C41E3D00416AD6 /* ProfileSet.swift in Sources */,

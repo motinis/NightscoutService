@@ -14,11 +14,12 @@ protocol RemoteNotification: Codable {
     var id: String {get}
     var expiration: Date? {get}
     var sentAt: Date? {get}
+    var otp: String? {get}
     var remoteAddress: String {get}
     var enteredBy: String? {get}
     
     func toRemoteAction() -> Action
-    func validate(otpManager: OTPManager) throws
+    func otpValidationRequired() -> Bool
     
     static func includedInNotification(_ notification: [String: Any]) -> Bool
 }

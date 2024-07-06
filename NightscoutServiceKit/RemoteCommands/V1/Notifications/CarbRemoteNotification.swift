@@ -45,11 +45,8 @@ public struct CarbRemoteNotification: RemoteNotification, Codable {
         return .carbsEntry(action)
     }
     
-    func validate(otpManager: OTPManager) throws {
-        let expirationValidator = ExpirationValidator(expiration: expiration)
-        let otpValidator = OTPValidator(sentAt: sentAt, otp: otp, otpManager: otpManager)
-        try expirationValidator.validate()
-        try otpValidator.validate()
+    func otpValidationRequired() -> Bool {
+        return true
     }
     
     public static func includedInNotification(_ notification: [String: Any]) -> Bool {
