@@ -57,6 +57,7 @@ public final class NightscoutService: Service {
                 return nil
             }
             _uploader = NightscoutClient(siteURL: siteURL, apiSecret: apiSecret)
+            _uploader!.errorHandler = logError(_:_:)
         }
         return _uploader
     }
@@ -110,6 +111,10 @@ public final class NightscoutService: Service {
 
         let uploader = NightscoutClient(siteURL: siteURL, apiSecret: apiSecret)
         uploader.checkAuth(completion)
+    }
+    
+    private func logError(_ error: Error, _ context: String) {
+        log.error("%s: %{public}@", context, String(describing: error))
     }
 
     public func completeCreate() {
@@ -203,8 +208,10 @@ extension NightscoutService: RemoteDataService {
         uploader.createCarbData(created) { result in
             switch result {
             case .failure(let error):
+                self.log.error("Failed to create carb data %{public}@: %{public}@", String(describing: created), String(describing: error))
                 completion(.failure(error))
             case .success(let createdObjectIds):
+                self.log.debug("Uploaded new carb data %@", String(describing: created))
                 let createdUploaded = !created.isEmpty
                 let syncIdentifiers = created.map { $0.syncIdentifier }
                 for (syncIdentifier, objectId) in zip(syncIdentifiers, createdObjectIds) {
@@ -217,13 +224,18 @@ extension NightscoutService: RemoteDataService {
                 uploader.updateCarbData(updated, usingObjectIdCache: self.objectIdCache) { result in
                     switch result {
                     case .failure(let error):
+                        self.log.error("Failed to update carb data %{public}@: %{public}@", String(describing: updated), String(describing: error))
                         completion(.failure(error))
                     case .success(let updatedUploaded):
+                        self.log.debug("Uploaded updated carb data %@", String(describing: updated))
+
                         uploader.deleteCarbData(deleted, usingObjectIdCache: self.objectIdCache) { result in
                             switch result {
                             case .failure(let error):
+                                self.log.error("Failed to delete carb data %{public}@: %{public}@", String(describing: updated), String(describing: error))
                                 completion(.failure(error))
                             case .success(let deletedUploaded):
+                                self.log.debug("Uploaded deleted carb data %@", String(describing: deleted))
                                 self.objectIdCache.purge(before: Date().addingTimeInterval(-self.objectIdCacheKeepTime))
                                 self.stateDelegate?.pluginDidUpdateState(self)
                                 completion(.success(createdUploaded || updatedUploaded || deletedUploaded))
@@ -246,8 +258,10 @@ extension NightscoutService: RemoteDataService {
         uploader.createDoses(created, usingObjectIdCache: self.objectIdCache) { (result) in
             switch (result) {
             case .failure(let error):
+                self.log.error("Failed to create doses %{public}@: %{public}@", String(describing: created), String(describing: error))
                 completion(.failure(error))
             case .success(let createdObjectIds):
+                self.log.error("Uploaded created doses %@", String(describing: created))
                 let createdUploaded = !created.isEmpty
                 let syncIdentifiers = created.map { $0.syncIdentifier }
                 for (syncIdentifier, objectId) in zip(syncIdentifiers, createdObjectIds) {
@@ -256,12 +270,16 @@ extension NightscoutService: RemoteDataService {
                     }
                 }
                 self.stateDelegate?.pluginDidUpdateState(self)
+                
+                let unmutableDeletes = deleted.filter { !$0.isMutable }
 
-                uploader.deleteDoses(deleted.filter { !$0.isMutable }, usingObjectIdCache: self.objectIdCache) { result in
+                uploader.deleteDoses(unmutableDeletes, usingObjectIdCache: self.objectIdCache) { result in
                     switch result {
                     case .failure(let error):
+                        self.log.error("Failed to delete doses %{public}@: %{public}@", String(describing: unmutableDeletes), String(describing: error))
                         completion(.failure(error))
                     case .success(let deletedUploaded):
+                        self.log.debug("Uploaded deleted doses %@", String(describing: unmutableDeletes))
                         self.objectIdCache.purge(before: Date().addingTimeInterval(-self.objectIdCacheKeepTime))
                         self.stateDelegate?.pluginDidUpdateState(self)
                         completion(.success(createdUploaded || deletedUploaded))
@@ -304,9 +322,10 @@ extension NightscoutService: RemoteDataService {
         uploader.uploadDeviceStatuses(statuses) { result in
             switch result {
             case .success:
+                self.log.debug("Uploaded device statuses %@", String(describing: statuses))
                 self.lastDosingDecisionForAutomaticDose = nil
-            default:
-                break
+            case .failure(let error):
+                self.log.error("Failed to upload device statuses %{public}@: %{public}@", String(describing: statuses), String(describing: error))
             }
             completion(result)
         }
@@ -348,7 +367,7 @@ extension NightscoutService: RemoteDataService {
                 self.log.error("Failed to upload pump events %{public}@: %{public}@", String(describing: treatments.map {$0.dictionaryRepresentation}), String(describing: error))
                 completion(.failure(error))
             case .success:
-                self.log.debug("Uploaded overrides %@", String(describing: treatments.map {$0.dictionaryRepresentation}))
+                self.log.debug("Uploaded pump events %@", String(describing: treatments.map {$0.dictionaryRepresentation}))
                 completion(.success(true))
             }
         }
