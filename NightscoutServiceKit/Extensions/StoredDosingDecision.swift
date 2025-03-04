@@ -156,6 +156,7 @@ extension StoredDosingDecision {
                                    automaticDoseRecommendation: loopStatusAutomaticDoseRecommendation,
                                    recommendedBolus: loopStatusRecommendedBolus,
                                    enacted: automaticDoseDecision?.loopStatusEnacted,
+                                   autoBolusCarbsActive: automaticDoseDecision?.autoBolusCarbsActive,
                                    failureReason: automaticDoseDecision?.loopStatusFailureReason),
             overrideStatus: overrideStatus)
     }
