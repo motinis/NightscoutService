@@ -35,7 +35,8 @@ extension LoopKit.TemporaryScheduleOverride {
             targetRange: nsTargetRange,
             insulinNeedsScaleFactor: settings.insulinNeedsScaleFactor,
             symbol: context.symbol,
-            name: context.name)
+            name: context.name,
+            autoBolusCarbsActive: settings.autoBolusCarbsActive)
     }
 
 }
@@ -91,7 +92,8 @@ extension LoopKit.TemporaryScheduleOverridePreset {
             targetRange: nsTargetRange,
             insulinNeedsScaleFactor: settings.insulinNeedsScaleFactor,
             symbol: self.symbol,
-            name: self.name)
+            name: self.name,
+            autoBolusCarbsActive: settings.autoBolusCarbsActive)
     }
 
 }
