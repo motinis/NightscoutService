@@ -27,13 +27,17 @@ final class OverrideRemoteNotificationTestCase: XCTestCase {
         let expectedExpirationDate = dateFormatter().date(from: expirationDateString)!
         let expectedName = "Exercise"
         let expectedDurationInMinutes = 15.1
+        let expectedUpdateAutoBolusCarbsActive = true
+        let expectedAutoBolusCarbsActive = false
         
         let notification: [String: Any] = [
             "remote-address": expectedRemoteAddress,
             "sent-at": sentAtDateString,
             "expiration": expirationDateString,
             "override-name": expectedName,
-            "override-duration-minutes": expectedDurationInMinutes
+            "override-duration-minutes": expectedDurationInMinutes,
+            "override-update-auto-bolus-carbs-active": expectedUpdateAutoBolusCarbsActive,
+            "override-auto-bolus-carbs-active": expectedAutoBolusCarbsActive
         ]
         
         //Act
@@ -45,6 +49,8 @@ final class OverrideRemoteNotificationTestCase: XCTestCase {
         XCTAssertEqual(overrideNotification.expiration, expectedExpirationDate)
         XCTAssertEqual(overrideNotification.name, expectedName)
         XCTAssertEqual(overrideNotification.durationInMinutes, expectedDurationInMinutes)
+        XCTAssertEqual(overrideNotification.updateAutoBolusCarbsActive, expectedUpdateAutoBolusCarbsActive)
+        XCTAssertEqual(overrideNotification.autoBolusCarbsActive, expectedAutoBolusCarbsActive)
     }
     
     

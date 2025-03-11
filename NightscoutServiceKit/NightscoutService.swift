@@ -418,6 +418,8 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
             try await self.serviceDelegate?.enactRemoteOverride(
                 name: overrideCommand.name,
                 durationTime: overrideCommand.durationTime,
+                updateAutoBolusCarbsActive: overrideCommand.updateAutoBolusCarbsActive,
+                autoBolusCarbsActive: overrideCommand.autoBolusCarbsActive,
                 remoteAddress: overrideCommand.remoteAddress
             )
         case .cancelTemporaryOverride:

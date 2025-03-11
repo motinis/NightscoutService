@@ -18,11 +18,16 @@ public struct OverrideRemoteNotification: RemoteNotification, Codable {
     public let sentAt: Date?
     public let enteredBy: String?
     public let otp: String?
+    public let updateAutoBolusCarbsActive: Bool?
+    public let autoBolusCarbsActive: Bool?
+    
     
     enum CodingKeys: String, CodingKey {
         case name = "override-name"
         case remoteAddress = "remote-address"
         case durationInMinutes = "override-duration-minutes"
+        case updateAutoBolusCarbsActive = "override-update-auto-bolus-carbs-active"
+        case autoBolusCarbsActive = "override-auto-bolus-carbs-active"
         case expiration = "expiration"
         case sentAt = "sent-at"
         case enteredBy = "entered-by"
@@ -37,7 +42,7 @@ public struct OverrideRemoteNotification: RemoteNotification, Codable {
     }
     
     func toRemoteAction() -> Action {
-        let action = OverrideAction(name: name, durationTime: durationTime(), remoteAddress: remoteAddress)
+        let action = OverrideAction(name: name, durationTime: durationTime(), updateAutoBolusCarbsActive: updateAutoBolusCarbsActive ?? false, autoBolusCarbsActive: autoBolusCarbsActive, remoteAddress: remoteAddress)
         return .temporaryScheduleOverride(action)
     }
     
