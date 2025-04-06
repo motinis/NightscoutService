@@ -56,6 +56,6 @@ extension OverrideTreatment {
             duration = .indefinite
         }
 
-        self.init(startDate: override.startDate, enteredBy: enteredBy, reason: reason, duration: duration, correctionRange: nsTargetRange, insulinNeedsScaleFactor: override.settings.insulinNeedsScaleFactor, remoteAddress:remoteAddress, id: override.syncIdentifier.uuidString)
+        self.init(startDate: override.startDate, enteredBy: enteredBy, reason: reason, duration: duration, correctionRange: nsTargetRange, insulinNeedsScaleFactor: override.settings.insulinNeedsScaleFactor, autoBolusCarbsActive: override.settings.autoBolusCarbsActive, remoteAddress:remoteAddress, id: override.syncIdentifier.uuidString)
     }
 }

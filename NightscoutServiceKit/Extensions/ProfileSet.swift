@@ -117,7 +117,8 @@ extension NightscoutKit.TemporaryScheduleOverride  {
         let temporaryOverrideSettings = TemporaryScheduleOverrideSettings(
             unit: unit,
             targetRange: target,
-            insulinNeedsScaleFactor: insulinNeedsScaleFactor)
+            insulinNeedsScaleFactor: insulinNeedsScaleFactor,
+            autoBolusCarbsActive: autoBolusCarbsActive)
 
         let loopDuration: LoopKit.TemporaryScheduleOverride.Duration
 
