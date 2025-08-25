@@ -5,10 +5,10 @@
 "Nightscout" = "Nightscout";
 
 /* Name of pre-meal workout override
-   Name uploaded to Nightscout for Pre-Meal override */
+Name uploaded to Nightscout for Pre-Meal override */
 "Pre-Meal" = "Pré-Repas";
 
 /* Name of legacy workout override
-   Name uploaded to Nightscout for legacy workout override */
+Name uploaded to Nightscout for legacy workout override */
 "Workout" = "Exercice";
 

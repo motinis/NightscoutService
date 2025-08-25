@@ -26,7 +26,7 @@
 "Override" = "Programma Alternativo";
 
 /* Name of pre-meal workout override
-   Name uploaded to Nightscout for Pre-Meal override */
+Name uploaded to Nightscout for Pre-Meal override */
 "Pre-Meal" = "Pre-Pasto";
 
 /* The remote action abbreviation for bolus units */
@@ -36,6 +36,6 @@
 "Unhandled Notification: %1$@" = "impostazioni notifiche ";
 
 /* Name of legacy workout override
-   Name uploaded to Nightscout for legacy workout override */
+Name uploaded to Nightscout for legacy workout override */
 "Workout" = "Allenamento";
 
