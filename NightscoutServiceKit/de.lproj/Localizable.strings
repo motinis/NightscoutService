@@ -23,13 +23,13 @@
 "Override" = "Override";
 
 /* Name of pre-meal workout override
-   Name uploaded to Nightscout for Pre-Meal override */
+Name uploaded to Nightscout for Pre-Meal override */
 "Pre-Meal" = "Vor dem Essen";
 
 /* The remote action abbreviation for bolus units */
 "U" = "IE";
 
 /* Name of legacy workout override
-   Name uploaded to Nightscout for legacy workout override */
+Name uploaded to Nightscout for legacy workout override */
 "Workout" = "Training";
 
