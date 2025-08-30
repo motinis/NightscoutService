@@ -8,10 +8,10 @@
 "Cancel" = "Annulla";
 
 /* Description of ServiceStatus of checking */
-"Checking..." = "Controllo in corso";
+"Checking..." = "Controllo in corso...";
 
 /* Button title to delete a service */
-"Delete Service" = "Elimina Servizio";
+"Delete Service" = "Elimina servizio";
 
 /* No comment provided by engineer. */
 "Done" = "Fine";
@@ -32,19 +32,19 @@
 "Nightscout Login" = "Accesso Nightscout";
 
 /* Error when nightscout service url is not set */
-"Not Available" = "Non Disponibile";
+"Not Available" = "Non disponibile";
 
 /* Description of ServiceStatus of checking */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"One-Time Password" = "Parola d'ordine temporanea";
+"One-Time Password" = "Password monouso";
 
 /* The default placeholder for required text */
 "Required" = "Necessario";
 
 /* No comment provided by engineer. */
-"Reset Secret Key" = "resettare la chiave segreta";
+"Reset Secret Key" = "Reimposta chiave segreta";
 
 /* The title of the Nightscout site URL */
 "Site URL" = "Sito URL";
