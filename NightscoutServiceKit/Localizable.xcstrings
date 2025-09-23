@@ -247,6 +247,12 @@
             "state" : "translated",
             "value" : "Karb Girişi"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "碳水记录"
+          }
         }
       }
     },
