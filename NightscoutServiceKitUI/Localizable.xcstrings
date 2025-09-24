@@ -214,6 +214,12 @@
             "state" : "translated",
             "value" : "Gizli anahtarı sıfırlamak istediğinizden emin misiniz?"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您确定要重置密钥吗？"
+          }
         }
       }
     },
@@ -451,6 +457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kontrol ediliyor..."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检查中..."
           }
         }
       }
@@ -905,6 +917,12 @@
             "state" : "translated",
             "value" : "Oturum açma"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录"
+          }
         }
       }
     },
@@ -998,6 +1016,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oturum Kapatma"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登出"
           }
         }
       }
@@ -1426,6 +1450,12 @@
             "state" : "translated",
             "value" : "OK"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好的"
+          }
         }
       }
     },
@@ -1501,6 +1531,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tek Kullanımlık Parola"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一次性密码"
           }
         }
       }
