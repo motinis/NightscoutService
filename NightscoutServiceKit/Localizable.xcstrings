@@ -876,6 +876,12 @@
             "state" : "translated",
             "value" : "Trước bữa ăn"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "餐前"
+          }
         }
       }
     },
