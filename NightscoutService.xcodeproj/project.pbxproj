@@ -638,6 +638,9 @@
 				cs,
 				hi,
 				sk,
+				ce,
+				hu,
+				uk,
 			);
 			mainGroup = A91BAC1122BC691A00ABF1BB;
 			packageReferences = (
