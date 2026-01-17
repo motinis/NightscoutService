@@ -8,6 +8,7 @@
 
 import Foundation
 import LoopKit
+import OSLog
 
 protocol RemoteNotification: Codable {
     
@@ -17,9 +18,11 @@ protocol RemoteNotification: Codable {
     var otp: String? {get}
     var remoteAddress: String {get}
     var enteredBy: String? {get}
+    var encryptedReturnNotification: String? {get}
     
     func toRemoteAction() -> Action
     func otpValidationRequired() -> Bool
+    func getReturnNotificationInfo() -> ReturnNotificationInfo?
     
     static func includedInNotification(_ notification: [String: Any]) -> Bool
 }
@@ -32,6 +35,37 @@ extension RemoteNotification {
             return "\(sentAt.timeIntervalSince1970)"
         } else {
             return UUID().uuidString
+        }
+    }
+    
+    func getReturnNotificationInfo() -> ReturnNotificationInfo? {
+        if encryptedReturnNotification == nil {
+            os_log("No encrypted return notification found in remote notification", log: .default, type: .info)
+            return nil
+        }
+        
+        guard let encryptedData = encryptedReturnNotification else {
+            os_log("encryptedReturnNotification is nil", log: .default, type: .error)
+            return nil
+        }
+        
+        guard let otpCode = otp else {
+            os_log("OTP code is nil, cannot decrypt return notification info", log: .default, type: .error)
+            return nil
+        }
+        
+        guard let messenger = OTPSecureMessenger(otpCode: otpCode) else {
+            os_log("Failed to create OTPSecureMessenger with OTP code", log: .default, type: .error)
+            return nil
+        }
+        
+        do {
+            let returnInfo = try messenger.decrypt(base64EncodedString: encryptedData)
+            os_log("Successfully decrypted return notification info for device token: %{public}@", log: .default, type: .info, returnInfo.deviceToken)
+            return returnInfo
+        } catch {
+            os_log("Failed to decrypt return notification info: %{public}@", log: .default, type: .error, error.localizedDescription)
+            return nil
         }
     }
     

@@ -20,6 +20,7 @@ public struct CarbRemoteNotification: RemoteNotification, Codable {
     public let sentAt: Date?
     public let otp: String?
     public let enteredBy: String?
+    public let encryptedReturnNotification: String?
 
     enum CodingKeys: String, CodingKey {
         case remoteAddress = "remote-address"
@@ -31,6 +32,7 @@ public struct CarbRemoteNotification: RemoteNotification, Codable {
         case sentAt = "sent-at"
         case otp = "otp"
         case enteredBy = "entered-by"
+        case encryptedReturnNotification = "encrypted_return_notification"
     }
     
     public func absorptionTime() -> TimeInterval? {

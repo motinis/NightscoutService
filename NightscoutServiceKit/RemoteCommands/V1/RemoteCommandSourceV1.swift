@@ -26,16 +26,30 @@ class RemoteCommandSourceV1: RemoteCommandSource {
     
     func remoteNotificationWasReceived(_ notification: [String: AnyObject]) async {
         
+        if let encryptedReturnNotification = notification["encrypted_return_notification"] {
+            log.info("Found encrypted_return_notification in notification: %{public}@", String(describing: encryptedReturnNotification))
+        } else {
+            log.info("No encrypted_return_notification found in notification. Available keys: %{public}@", Array(notification.keys).joined(separator: ", "))
+        }
+        
         do {
             guard let delegate = delegate else {return}
             let remoteNotification = try notification.toRemoteNotification()
+            
+            // Log after parsing to see if the field was preserved
+            if let encryptedReturnNotification = remoteNotification.encryptedReturnNotification {
+                log.info("Parsed encrypted_return_notification successfully, length: %d", encryptedReturnNotification.count)
+            } else {
+                log.info("encrypted_return_notification is nil after parsing")
+            }
+            
             guard await !recentNotifications.isDuplicate(remoteNotification) else {
                 // Duplicate notifications are expected after app is force killed
                 // https://github.com/LoopKit/Loop/issues/2174
                 return
             }
             try commandValidator.validate(remoteNotification: remoteNotification)
-            try await delegate.commandSourceV1(self, handleAction: remoteNotification.toRemoteAction())
+            try await delegate.commandSourceV1(self, handleAction: remoteNotification.toRemoteAction(), remoteNotification: remoteNotification)
         } catch {
             log.error("Remote Notification: %{public}@. Error: %{public}@", String(describing: notification), String(describing: error))
             try? await self.delegate?.commandSourceV1(self, uploadError: error, notification: notification)
@@ -44,7 +58,7 @@ class RemoteCommandSourceV1: RemoteCommandSource {
 }
 
 protocol RemoteCommandSourceV1Delegate: AnyObject {
-    func commandSourceV1(_: RemoteCommandSourceV1, handleAction action: Action) async throws
+    func commandSourceV1(_: RemoteCommandSourceV1, handleAction action: Action, remoteNotification: RemoteNotification) async throws
     func commandSourceV1(_: RemoteCommandSourceV1, uploadError error: Error, notification: [String: AnyObject]) async throws
 }
 

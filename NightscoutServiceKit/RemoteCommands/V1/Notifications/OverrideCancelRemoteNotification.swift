@@ -17,6 +17,7 @@ public struct OverrideCancelRemoteNotification: RemoteNotification, Codable {
     public let cancelOverride: String
     public let enteredBy: String?
     public let otp: String?
+    public let encryptedReturnNotification: String?
 
     enum CodingKeys: String, CodingKey {
         case remoteAddress = "remote-address"
@@ -25,6 +26,7 @@ public struct OverrideCancelRemoteNotification: RemoteNotification, Codable {
         case cancelOverride = "cancel-temporary-override"
         case enteredBy = "entered-by"
         case otp = "otp"
+        case encryptedReturnNotification = "encrypted_return_notification"
     }
     
     func toRemoteAction() -> Action {
