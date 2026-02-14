@@ -411,25 +411,75 @@ extension NightscoutService: RemoteDataService {
 
 extension NightscoutService: RemoteCommandSourceV1Delegate {
     
-    func commandSourceV1(_: RemoteCommandSourceV1, handleAction action: Action) async throws {
+    func commandSourceV1(_: RemoteCommandSourceV1, handleAction action: Action, remoteNotification: RemoteNotification) async throws {
         
-        switch action {
-        case .temporaryScheduleOverride(let overrideCommand):
-            try await self.serviceDelegate?.enactRemoteOverride(
-                name: overrideCommand.name,
-                durationTime: overrideCommand.durationTime,
-                remoteAddress: overrideCommand.remoteAddress
-            )
-        case .cancelTemporaryOverride:
-            try await self.serviceDelegate?.cancelRemoteOverride()
-        case .bolusEntry(let bolusCommand):
-            try await self.serviceDelegate?.deliverRemoteBolus(amountInUnits: bolusCommand.amountInUnits)
-        case .carbsEntry(let carbCommand):
-            try await self.serviceDelegate?.deliverRemoteCarbs(
-                amountInGrams: carbCommand.amountInGrams,
-                absorptionTime: carbCommand.absorptionTime,
-                foodType: carbCommand.foodType,
-                startDate: carbCommand.startDate
+        let returnInfo = remoteNotification.getReturnNotificationInfo()
+        if returnInfo == nil {
+            os_log("No return notification info available, response will not be sent", log: .default, type: .info)
+        } else {
+            os_log("Return notification info available, will send response after command processing", log: .default, type: .info)
+        }
+        
+        var commandType: RemoteNotificationResponseManager.CommandType = .bolus // Default, will be set in switch
+        var success = false
+        var message = ""
+        
+        do {
+            switch action {
+            case .temporaryScheduleOverride(let overrideCommand):
+                commandType = .override
+                try await self.serviceDelegate?.enactRemoteOverride(
+                    name: overrideCommand.name,
+                    durationTime: overrideCommand.durationTime,
+                    remoteAddress: overrideCommand.remoteAddress
+                )
+                success = true
+                message = "Override '\(overrideCommand.name)' enacted successfully"
+                
+            case .cancelTemporaryOverride:
+                commandType = .cancelOverride
+                try await self.serviceDelegate?.cancelRemoteOverride()
+                success = true
+                message = "Override cancelled successfully"
+                
+            case .bolusEntry(let bolusCommand):
+                commandType = .bolus
+                try await self.serviceDelegate?.deliverRemoteBolus(amountInUnits: bolusCommand.amountInUnits)
+                success = true
+                message = String(format: "Bolus of %.2f units delivered successfully", bolusCommand.amountInUnits)
+                
+            case .carbsEntry(let carbCommand):
+                commandType = .carbs
+                try await self.serviceDelegate?.deliverRemoteCarbs(
+                    amountInGrams: carbCommand.amountInGrams,
+                    absorptionTime: carbCommand.absorptionTime,
+                    foodType: carbCommand.foodType,
+                    startDate: carbCommand.startDate
+                )
+                success = true
+                message = String(format: "Carbs entry of %.1f g delivered successfully", carbCommand.amountInGrams)
+            }
+        } catch {
+            message = "Command failed: \(error.localizedDescription)"
+            // Send failure response before rethrowing
+            if let returnInfo = returnInfo {
+                await RemoteNotificationResponseManager.shared.sendResponseNotification(
+                    to: returnInfo,
+                    commandType: commandType,
+                    success: false,
+                    message: message
+                )
+            }
+            throw error
+        }
+        
+        // Send success response
+        if let returnInfo = returnInfo {
+            await RemoteNotificationResponseManager.shared.sendResponseNotification(
+                to: returnInfo,
+                commandType: commandType,
+                success: success,
+                message: message
             )
         }
     }
