@@ -10,6 +10,7 @@
 		657F99DE2F0BC17B00F732BD /* RemoteNotificationResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F99DD2F0BC17B00F732BD /* RemoteNotificationResponseManager.swift */; };
 		657F99DF2F0BC17B00F732BD /* APNSJWTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F99DB2F0BC17B00F732BD /* APNSJWTManager.swift */; };
 		657F99E02F0BC17B00F732BD /* OTPSecureMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F99DC2F0BC17B00F732BD /* OTPSecureMessenger.swift */; };
+		657F99E32F0BC17B00F732BD /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 657F99E22F0BC17B00F732BD /* SwiftJWT */; };
 		A90E399E22BC76DB0016DFE8 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90E399D22BC76DB0016DFE8 /* TimeInterval.swift */; };
 		A90E39A122BC773A0016DFE8 /* NightscoutUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90E39A022BC773A0016DFE8 /* NightscoutUploader.swift */; };
 		A90E39A322BC782C0016DFE8 /* SyncCarbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90E39A222BC782C0016DFE8 /* SyncCarbObject.swift */; };
@@ -72,7 +73,6 @@
 		C1C1349D27DD38000097B5AD /* NightscoutServiceKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91BAC3A22BC69B500ABF1BB /* NightscoutServiceKitUI.framework */; };
 		C1C1349E27DD38000097B5AD /* NightscoutServiceKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A91BAC3A22BC69B500ABF1BB /* NightscoutServiceKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1CEBFF429BCC104007FD8A3 /* NightscoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = C1CEBFF329BCC104007FD8A3 /* NightscoutKit */; };
-		657F99E32F0BC17B00F732BD /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 657F99E22F0BC17B00F732BD /* SwiftJWT */; };
 		C1E10F012ABF3B190036A416 /* PersistedPumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E10F002ABF3B190036A416 /* PersistedPumpEvent.swift */; };
 		C1E703642506BE9400DAB534 /* ObjectIdCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E703632506BE9400DAB534 /* ObjectIdCache.swift */; };
 		C1E7036625070A0E00DAB534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1E7036525070A0E00DAB534 /* Assets.xcassets */; };
@@ -1304,6 +1304,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		657F99E12F0BC17B00F732BD /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.0.1;
+			};
+		};
 		C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mattrubin/OneTimePassword";
@@ -1320,17 +1328,14 @@
 				kind = branch;
 			};
 		};
-		657F99E12F0BC17B00F732BD /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
-			requirement = {
-				kind = exactVersion;
-				version = 4.0.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		657F99E22F0BC17B00F732BD /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 657F99E12F0BC17B00F732BD /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
+		};
 		C1B9ACF727DE987400857532 /* OneTimePassword */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */;
@@ -1340,11 +1345,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C1CEBFF229BCC104007FD8A3 /* XCRemoteSwiftPackageReference "NightscoutKit" */;
 			productName = NightscoutKit;
-		};
-		657F99E22F0BC17B00F732BD /* SwiftJWT */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 657F99E12F0BC17B00F732BD /* XCRemoteSwiftPackageReference "Swift-JWT" */;
-			productName = SwiftJWT;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
