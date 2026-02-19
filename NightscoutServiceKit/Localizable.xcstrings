@@ -16,6 +16,12 @@
             "value" : "Boluseintrag"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrée du bolus"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -408,6 +414,12 @@
             "value" : "Abgelaufen"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expiré"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -578,6 +590,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fehlendes OTP"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code OTP manquant"
           }
         },
         "it" : {
@@ -952,7 +970,7 @@
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preprandial"
+            "value" : "Înainte de masă"
           }
         },
         "ru" : {
@@ -1002,6 +1020,12 @@
             "value" : "IE"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "U"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1026,6 +1050,12 @@
             "value" : "J"
           }
         },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "U"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1047,6 +1077,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nicht bearbeitete Benachrichtigung: %1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification non traitée: %1$@"
           }
         },
         "it" : {
