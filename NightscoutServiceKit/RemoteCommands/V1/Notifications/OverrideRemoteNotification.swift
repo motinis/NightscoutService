@@ -20,7 +20,7 @@ public struct OverrideRemoteNotification: RemoteNotification, Codable {
     public let otp: String?
     public let updateAutoBolusCarbsActive: Bool?
     public let autoBolusCarbsActive: Bool?
-    
+    public let encryptedReturnNotification: String?
     
     enum CodingKeys: String, CodingKey {
         case name = "override-name"
@@ -32,6 +32,7 @@ public struct OverrideRemoteNotification: RemoteNotification, Codable {
         case sentAt = "sent-at"
         case enteredBy = "entered-by"
         case otp = "otp"
+        case encryptedReturnNotification = "encrypted_return_notification"
     }
     
     public func durationTime() -> TimeInterval? {

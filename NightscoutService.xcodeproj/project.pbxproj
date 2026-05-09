@@ -78,6 +78,10 @@
 		C1E70395250725AA00DAB534 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E70394250725AA00DAB534 /* KeyboardObserver.swift */; };
 		C1EBB08A252596EA000D9680 /* ServiceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EBB089252596EA000D9680 /* ServiceStatusView.swift */; };
 		C1F7822827CD57A100C0919A /* OverrideTreament.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F7822727CD57A100C0919A /* OverrideTreament.swift */; };
+		CD3886942F4737F10018D245 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = CD3886932F4737F10018D245 /* SwiftJWT */; };
+		CD3886982F4738F00018D245 /* RemoteNotificationResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3886972F4738F00018D245 /* RemoteNotificationResponseManager.swift */; };
+		CD3886992F4738F00018D245 /* APNSJWTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3886952F4738F00018D245 /* APNSJWTManager.swift */; };
+		CD38869A2F4738F00018D245 /* OTPSecureMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3886962F4738F00018D245 /* OTPSecureMessenger.swift */; };
 		CD8E7E5C2D76E3B500F8145D /* NightscoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD8E7E5B2D76E3B500F8145D /* NightscoutKit */; };
 /* End PBXBuildFile section */
 
@@ -206,6 +210,9 @@
 		C1E70394250725AA00DAB534 /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		C1EBB089252596EA000D9680 /* ServiceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatusView.swift; sourceTree = "<group>"; };
 		C1F7822727CD57A100C0919A /* OverrideTreament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideTreament.swift; sourceTree = "<group>"; };
+		CD3886952F4738F00018D245 /* APNSJWTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNSJWTManager.swift; sourceTree = "<group>"; };
+		CD3886962F4738F00018D245 /* OTPSecureMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPSecureMessenger.swift; sourceTree = "<group>"; };
+		CD3886972F4738F00018D245 /* RemoteNotificationResponseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationResponseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +223,7 @@
 				C1C1349827DD35260097B5AD /* LoopKitUI.framework in Frameworks */,
 				CD8E7E5C2D76E3B500F8145D /* NightscoutKit in Frameworks */,
 				C1C1349627DD35060097B5AD /* LoopKit.framework in Frameworks */,
+				CD3886942F4737F10018D245 /* SwiftJWT in Frameworks */,
 				C1B9ACF827DE987400857532 /* OneTimePassword in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +380,9 @@
 		A99A115C29AA2870007919CE /* RemoteCommands */ = {
 			isa = PBXGroup;
 			children = (
+				CD3886952F4738F00018D245 /* APNSJWTManager.swift */,
+				CD3886962F4738F00018D245 /* OTPSecureMessenger.swift */,
+				CD3886972F4738F00018D245 /* RemoteNotificationResponseManager.swift */,
 				A9AA6E5729EB06AA008FFA78 /* Actions */,
 				A941B08629BCB87500F91340 /* RemoteCommandSource.swift */,
 				A98A0C1F29C71E8F0067DE0F /* V1 */,
@@ -516,6 +527,7 @@
 			packageProductDependencies = (
 				C1B9ACF727DE987400857532 /* OneTimePassword */,
 				CD8E7E5B2D76E3B500F8145D /* NightscoutKit */,
+				CD3886932F4737F10018D245 /* SwiftJWT */,
 			);
 			productName = NightscoutService;
 			productReference = A91BAC1B22BC691A00ABF1BB /* NightscoutServiceKit.framework */;
@@ -646,6 +658,7 @@
 			packageReferences = (
 				C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */,
 				CD8E7E5A2D76E3B500F8145D /* XCRemoteSwiftPackageReference "NightscoutKit" */,
+				CD3886922F4737F10018D245 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 			);
 			productRefGroup = A91BAC1C22BC691A00ABF1BB /* Products */;
 			projectDirPath = "";
@@ -726,6 +739,9 @@
 				A9B007B322BD6FF7000131DE /* LocalizedString.swift in Sources */,
 				A941B08729BCB87500F91340 /* RemoteCommandSource.swift in Sources */,
 				A941B09229BD4A9F00F91340 /* OverrideCancelRemoteNotification.swift in Sources */,
+				CD3886982F4738F00018D245 /* RemoteNotificationResponseManager.swift in Sources */,
+				CD3886992F4738F00018D245 /* APNSJWTManager.swift in Sources */,
+				CD38869A2F4738F00018D245 /* OTPSecureMessenger.swift in Sources */,
 				C1398D2227C434FB00416AD6 /* Data.swift in Sources */,
 				A90E39A522BC791E0016DFE8 /* DoseEntry.swift in Sources */,
 				A934B6182358F49300949C8B /* StoredSettings.swift in Sources */,
@@ -1296,6 +1312,14 @@
 				revision = 8e4022f2852d77240d0a17482cbfe325354aac70;
 			};
 		};
+		CD3886922F4737F10018D245 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.2;
+			};
+		};
 		CD8E7E5A2D76E3B500F8145D /* XCRemoteSwiftPackageReference "NightscoutKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/motinis/NightscoutKit/";
@@ -1311,6 +1335,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */;
 			productName = OneTimePassword;
+		};
+		CD3886932F4737F10018D245 /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD3886922F4737F10018D245 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
 		};
 		CD8E7E5B2D76E3B500F8145D /* NightscoutKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -594,7 +594,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete Service"
+            "value" : "删除服务"
           }
         }
       }
@@ -670,7 +670,7 @@
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Realizat"
+            "value" : "Gata"
           }
         },
         "ru" : {
@@ -1325,6 +1325,12 @@
             "state" : "translated",
             "value" : "Kullanılabilir değil"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不可用"
+          }
         }
       }
     },
@@ -1454,7 +1460,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "好的"
+            "value" : "OK"
           }
         }
       }
